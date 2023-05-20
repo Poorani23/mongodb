@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <style>
+      @import url('"https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">');
+.button-30 {
+  align-items: center;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.button-30:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-30:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-30:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body,
+input{
+   text-align:center;
+    font-family: 'Poppins',sans-serif;
+    background-color: pink;
+    color:white;
+
+}
+.container{
+    position: relative;
+    width: 100%;
+    background-color: white;
+    min-height: 100vh;
+    overflow:hidden;
+}
+.forms-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.container::before{
+    content: '';
+    position: absolute;
+    height: 2000px;
+    width: 2000px;
+    top: -10%;
+    left: 0%;
+    background-image: linear-gradient(-45deg, pink 100%,rgb(228, 89, 202) 0%);
+    /*transform: translateY(-50%);
+    border-radius: 100%;*/
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5rem;
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+.title{
+    font-size: 2.2rem;
+    color: #444;
+    margin-bottom: 10px;
+}
+.input-field{
+    max-width: 380px;
+    width: 100%;
+    height: 55px;
+    background-color: #f0f0f0;
+    margin: 20px 0;
+    border-radius: 55px;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    padding: 0 0.4rem;
+    position:relative;
+}
+.input-field i {
+      text-align: center;
+      line-height: 6px;
+      color: #acacac;
+      font-size: 1.5rem;
+}
+.input-field input{
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #333;
+}
+.input-field input:placeholder-shown{
+    color: #aaa;
+    font-weight: 100%;
+}
+.btn{
+    width: 150px;
+    height: 50px;
+    outline: none;
+    border: none;
+    border-radius: 48px;
+    background-color: rgb(209, 118, 178);
+    color: white;
+    text-transform:uppercase;
+    font-weight: 600;
+    margin: 20px 0;
+    transition: all 0.9s;
+    text-align: center;
+}
+.btn:hover{
+    background-color:rgb(232, 37, 173);
+}
+
+form.sign-in-form{
+    z-index: 2;
+}
+
+    </style>
+    
+    <title> Student Details</title>
+   
+</head>
+<body>
+    
+    <h1 style="font-style: italic; font-family:'Poppins',sans-serif">CRUD OPERATIONS</h1>
+       <br>
+     <h1>Student Details</h1>
+      <div class="container">
+        <div class="signin-signup">
+              
+              {{message}}
+              {{#if edit_id}}
+               <h3>Edit</h3>
+              <form method="post" action="/update_StudDet/{{edit_id}}" class="sign-in-form">
+                 <div class="input-field">
+                  <label for=""></label>
+                  <input type="text" name="name" value="{{edit_StudDet.name}}"></div>
+                  <br><br>
+                  <div class="input-field">
+                  <label for=""></label>
+                  <input type="number" name="age" value="{{edit_StudDet.age}}"></div>
+                  <br><br>
+                  <div class="input-field">
+                  <label for=""></label>
+                  <input type="date" name="dob" value="{{edit_StudDet.dob}}"></div>
+                  <br><br>
+                  <div class="input-field">
+                  <label for=""></label>
+                  <input type="text" name="dept" value="{{edit_StudDet.dept}}"></div>
+                  <br><br>
+                  <div class="input-field">
+                  <label for=""></label>
+                  <input type="number" name="ph_no" value="{{edit_StudDet.ph_no}}">
+                   </div>
+                  <br><br>
+                 
+                 
+                  <input type="submit" style="margin:10px" class="button-30" role="button">
+              </form><br><br>
+              {{else}}
+              <h3>Create</h3>
+              <br>
+              <form method="post" action="/store_StudDet" class="sign-in-form">
+                  <div class="input-field">
+                  <label for=""></label>
+                  <input type="text" name="name" placeholder="Student Name">
+                  </div>
+                  <br><br>
+                  <div class="input-field">
+                  <label for=""></label>
+                  <input type="number" name="age" placeholder="Student Age">
+                  </div>
+                  <br><br>
+                  <div class="input-field">                    
+                  <label for=""></label>
+                  <input type="date" name="dob" placeholder="Date of Birth">
+                  </div><br><br>
+                  <div class="input-field">
+                  <label for=""></label>
+                  <input type="text" name="dept" placeholder="Department">
+                  </div><br><br>
+                  <div class="input-field">
+                  <label for=""></label>
+                  <input type="number" name="ph_no" placeholder="Phone Number"></div>
+                  <br><br>
+                  <input type="submit" class="button-30" role="button" style="margin: 10px;">
+              <br><br>
+              </form>
+             {{/if}}   
+    </div>
+    </div>
+    <fieldset>
+      <legend>List of Students</legend>
+    <ul>
+        {{#each StudDet}}
+        <li> <b style="color:black">Name:</b>{{this.name}}.
+             <b style="color:black">Age:</b>{{this.age}} .
+             <b style="color:black">Department:</b> {{this.dept}} . 
+             <b style="color:black">DateOfBirth:</b>{{this.dob}}  .
+            <b style="color:black"> PhoneNumber:</b>{{this.ph_no}}<a href="/?edit_id={{this._id}}"> <br> <br><button class="button-30" role="button">Edit</button></a>  <a href="/?delete_id={{this._id}}" onclick="return confirm('Are you sure want to delete?')" > <button class="button-30" role="button"> Delete</button></a><br><br></li>
+        {{/each}}
+    </ul>
+</fieldset>
+</body>
+</html>
